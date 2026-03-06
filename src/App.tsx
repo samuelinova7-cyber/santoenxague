@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-const HERO_VIDEO_URL = "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/santo%20enxague%20grook.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvc2FudG8gZW54YWd1ZSBncm9vay5tcDQiLCJpYXQiOjE3NzI0NjY4NTMsImV4cCI6MjAyNDc1NDg1M30.oDxVFBNTbV3LfRHBNJq_xb89wiFOpN5Yxl0QArTMLTQ";
+const HERO_VIDEO_URL = "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/grok-video-9eeefebc-d8bd-4a27-beda-28d407a22b63%20(1).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvZ3Jvay12aWRlby05ZWVlZmViYy1kOGJkLTRhMjctYmVkYS0yOGQ0MDdhMjJiNjMgKDEpLm1wNCIsImlhdCI6MTc3Mjc1NTc1MywiZXhwIjoyMDU2NTc5NzUzfQ.BZ3VNlPeIMhCXo2mcoQuTnAkHrnYZvCBbbtObvO64bE";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,26 +46,17 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white selection:bg-brand-purple/20 selection:text-brand-purple">
-      {/* 1. Top Bar Marquee */}
-      <div className="bg-brand-purple text-white py-2 overflow-hidden whitespace-nowrap relative z-50">
-        <div className="flex animate-marquee">
-          {[...Array(10)].map((_, i) => (
-            <span key={i} className="mx-8 font-medium text-sm flex items-center gap-2">
-              <Zap size={14} className="text-brand-green" /> 
-              ROUPAS LIMPAS E SECAS EM 1 HORA • ABERTO TODOS OS DIAS (06H ÀS 22H) • SABÃO E AMACIANTE INCLUSOS • WI-FI GRÁTIS
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* Navbar */}
-      <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 px-4 md:px-8 ${scrolled ? 'top-2' : 'top-10'}`}>
-        <div className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${scrolled ? 'glass shadow-lg py-3' : 'bg-transparent py-5'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 px-4 md:px-8 ${scrolled ? 'glass shadow-lg py-3' : 'bg-white py-5'}`}>
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between px-6">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-brand-purple rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-purple/20">
-                <Droplets size={24} />
-              </div>
+            <div className="flex items-center gap-3">
+              <img 
+                src="https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-05%20205121.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDUgMjA1MTIxLnBuZyIsImlhdCI6MTc3Mjc1NTg2NCwiZXhwIjoyMDU2NTc5ODY0fQ.m2zgFylG1UuWwfTk3fP3jiyIVEti1U_TuXCyy_Bpu0Q" 
+                alt="Santo Enxágue Logo" 
+                className="w-12 h-12 object-contain"
+                referrerPolicy="no-referrer"
+              />
               <span className="font-bold text-xl tracking-tight text-brand-purple">Santo Enxágue</span>
             </div>
 
@@ -84,12 +75,12 @@ export default function App() {
 
             <div className="hidden md:block">
               <a 
-                href="https://wa.me/5555999999999" 
+                href="https://wa.me/5551991371968" 
                 target="_blank" 
                 rel="noreferrer"
-                className="bg-brand-purple text-white px-6 py-2.5 rounded-xl font-semibold text-sm hover:bg-brand-blue transition-all shadow-lg shadow-brand-purple/20 flex items-center gap-2"
+                className="bg-[#25D366] text-white px-6 py-2.5 rounded-xl font-semibold text-sm hover:bg-green-600 transition-all shadow-lg flex items-center gap-2"
               >
-                Lavar Agora <ArrowRight size={16} />
+                <MessageCircle size={16} /> Saiba mais
               </a>
             </div>
 
@@ -133,7 +124,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* 2. Hero Section */}
-      <section id="home" className="pt-48 pb-20 px-4 md:px-8 overflow-hidden">
+      <section id="home" className="pt-32 pb-20 px-4 md:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -141,9 +132,6 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1.5 bg-brand-green/10 text-brand-green rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-              Lavanderia Express em Uruguaiana
-            </span>
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6 text-gray-900">
               Roupas <span className="text-brand-purple">limpas e secas</span> em 1 hora!
             </h1>
@@ -153,9 +141,6 @@ export default function App() {
             <div className="flex flex-wrap gap-4">
               <a href="#units" className="bg-brand-green text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-transform shadow-xl shadow-brand-green/20">
                 Ver Localização
-              </a>
-              <a href="#how-it-works" className="bg-white border-2 border-brand-purple text-brand-purple px-8 py-4 rounded-2xl font-bold hover:bg-brand-purple/5 transition-colors">
-                Como Funciona
               </a>
             </div>
           </motion.div>
@@ -178,24 +163,6 @@ export default function App() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/40 to-transparent pointer-events-none" />
             </div>
-            
-            {/* Badge Flutuante */}
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="absolute -bottom-6 -left-6 glass p-6 rounded-3xl shadow-xl border border-white/50 hidden lg:block"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-green rounded-2xl flex items-center justify-center text-black">
-                  <Clock size={24} />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-gray-500 uppercase tracking-tighter">Tempo Médio</p>
-                  <p className="text-xl font-bold text-brand-purple">60 Minutos</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -382,7 +349,7 @@ export default function App() {
           ].map((item, i) => (
             <div key={i} className="mx-4 glass p-8 rounded-3xl min-w-[350px] border border-gray-100 shadow-sm">
               <div className="flex gap-1 mb-4">
-                {[...Array(item.stars)].map((_, s) => <Star key={s} size={16} className="fill-brand-green text-brand-green" />)}
+                {[...Array(item.stars)].map((_, s) => <Star key={s} size={16} className="fill-yellow-400 text-yellow-400" />)}
               </div>
               <p className="text-gray-700 italic mb-6">"{item.text}"</p>
               <p className="font-bold text-brand-purple">{item.name}</p>

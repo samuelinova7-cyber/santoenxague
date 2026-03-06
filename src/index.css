@@ -4,10 +4,10 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
 
-  --color-brand-purple: #8300C9;
-  --color-brand-blue: #3232E3;
-  --color-brand-cyan: #01CAFF;
-  --color-brand-green: #69F03B;
+  --color-brand-purple: #612F74;
+  --color-brand-blue: #122940;
+  --color-brand-cyan: #68C6F0;
+  --color-brand-green: #9BFAB0;
 }
 
 @layer base {
