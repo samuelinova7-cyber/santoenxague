@@ -38,10 +38,10 @@ export default function App() {
 
   const navLinks = [
     { name: 'Início', href: '#home' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Como Funciona', href: '#how-it-works' },
-    { name: 'Preços', href: '#pricing' },
-    { name: 'Unidades', href: '#units' },
+    { name: 'Estrutura', href: '#about' },
+    { name: 'Serviços', href: '#how-it-works' },
+    { name: 'Valores', href: '#pricing' },
+    { name: 'Localização', href: '#units' },
   ];
 
   return (
@@ -441,7 +441,7 @@ export default function App() {
               </div>
               <div className="flex items-center gap-2 text-brand-green font-bold">
                 <div className="w-2 h-2 bg-brand-green rounded-full animate-pulse" />
-                Aberto Agora
+                Funcionamos todos os dias, incluindo sábados, domingos e feriados, das 06h:00 às 22:00.
               </div>
             </div>
             <div className="lg:col-span-2">
@@ -461,25 +461,53 @@ export default function App() {
         </div>
       </section>
 
+      {/* 9. FAQ Section */}
+      <section id="faq" className="py-24 px-4 md:px-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Dúvidas Frequentes</h2>
+          <div className="space-y-6">
+            {[
+              { q: "Quanto tempo demora o ciclo?", a: "Os ciclos de lavagem duram 35 minutos e os ciclos de secagem duram até 45 minutos (podendo ser encerrado a qualquer momento). Em pouco mais de uma hora você tem suas roupas prontas para guardar!" },
+              { q: "Qual o horário de funcionamento?", a: "Funcionamos todos os dias, incluindo sábados, domingos e feriados, das 06h:00 às 22:00." },
+              { q: "Como funciona o autoatendimento?", a: "Você coloca as roupas no cesto de medida, escolhe sua máquina, realiza o pagamento no totem (PIX ou Cartão) e inicia o ciclo. A máquina injeta o sabão e o amaciante automaticamente! É rápido e prático!" },
+              { q: "Quais são as formas de pagamento?", a: "Aceitamos PIX, Cartão de Débito e Cartão de Crédito diretamente no nosso totem." },
+              { q: "Preciso levar sabão ou amaciante?", a: "Não precisa! Utilizamos as melhores marcas do mercado, OMO e Comfort, que já estão inclusos no valor e são dispensados automaticamente." },
+              { q: "O que não pode ser lavado?", a: "Por higiene e segurança das máquinas, não é permitida a lavagem de: tapetes, tênis/calçados, roupas de pet, roupas hospitalares, almofadas e travesseiros." },
+              { q: "Posso lavar edredon e coberta?", a: "Pode! Verifique primeiro a capacidade em nossos cestos de medida. Temos a máquina BIG, ideal para esses tipos de peça." }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <h4 className="font-bold text-lg mb-2 text-brand-purple">{item.q}</h4>
+                <p className="text-gray-600">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 9. Footer */}
       <footer className="py-20 bg-white px-4 md:px-8 border-t border-gray-100">
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-brand-purple rounded-xl flex items-center justify-center text-white">
-                <Droplets size={24} />
-              </div>
-              <span className="font-bold text-2xl tracking-tight text-brand-purple">Santo Enxágue</span>
+          <div className="md:col-span-4 flex flex-col items-center text-center">
+            <div className="flex items-center gap-3 mb-6">
+              <img 
+                src="https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-05%20205121.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDUgMjA1MTIxLnBuZyIsImlhdCI6MTc3MjgwNzU0NywiZXhwIjoyMDU2NjMxNTQ3fQ._VL1av0Ykl9ir1jKgCBvA5AdkWvjbOHOpRVEjoevnPE" 
+                alt="Santo Enxágue Logo" 
+                className="w-20 h-20 object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <span className="font-bold text-3xl tracking-tight text-brand-purple">Santo Enxágue</span>
             </div>
-            <p className="text-gray-500 max-w-sm mb-8">
+            <p className="text-gray-500 max-w-md mb-8">
               A sua lavanderia express em Uruguaiana. Roupas limpas, secas e cheirosas com a praticidade que o seu tempo exige.
             </p>
-            <div className="flex gap-4">
-              <a href="https://instagram.com/santoenxague" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand-purple hover:border-brand-purple transition-all">
-                <Instagram size={20} />
+            <div className="flex gap-4 justify-center">
+              <a href="https://www.instagram.com/santoenxague?igsh=MTJhbzJjcjllMDk0Ng==" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#E1306C] hover:border-[#E1306C] transition-all">
+                <Instagram size={24} />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand-purple hover:border-brand-purple transition-all">
-                <MessageCircle size={20} />
+              <a href="https://www.facebook.com/profile.php?id=61575107378594&locale=pt_BR" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4267B2] hover:border-[#4267B2] transition-all">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                </svg>
               </a>
             </div>
           </div>
