@@ -18,7 +18,9 @@ import {
   Star,
   Wind,
   Droplets,
-  Zap
+  Zap,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -27,6 +29,7 @@ const HERO_VIDEO_URL = "https://ophugihxmlphgcryuode.supabase.co/storage/v1/obje
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,7 +78,7 @@ export default function App() {
 
             <div className="hidden md:block">
               <a 
-                href="https://wa.me/5551991371968" 
+                href="https://bit.ly/4srCqg2" 
                 target="_blank" 
                 rel="noreferrer"
                 className="bg-[#25D366] text-white px-6 py-2.5 rounded-xl font-semibold text-sm hover:bg-green-600 transition-all shadow-lg flex items-center gap-2"
@@ -113,7 +116,7 @@ export default function App() {
                 </a>
               ))}
               <a 
-                href="https://wa.me/5555999999999" 
+                href="https://bit.ly/4srCqg2" 
                 className="bg-brand-purple text-white py-4 rounded-2xl text-center font-bold text-lg shadow-xl shadow-brand-purple/20"
               >
                 Lavar Agora
@@ -133,7 +136,7 @@ export default function App() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6 text-gray-900">
-              Roupas <span className="text-brand-purple">limpas e secas</span> em 1 hora!
+              Roupas <span className="text-brand-purple">limpas e secas</span> em aproximadamente 1 hora!
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
               A experiência de lavanderia express que você merece. Tecnologia de ponta, conforto total e praticidade para o seu dia a dia.
@@ -215,7 +218,7 @@ export default function App() {
           <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
             Suas máquinas domésticas não dão conta? Temos equipamentos de alta capacidade para lavar e secar suas peças mais pesadas com perfeição.
           </p>
-          <a href="https://wa.me/5555999999999" className="inline-flex items-center gap-2 bg-brand-green text-black px-10 py-4 rounded-2xl font-bold hover:scale-105 transition-transform">
+          <a href="https://machines.sislav.com.br/YsN7B0oPye" className="inline-flex items-center gap-2 bg-brand-green text-black px-10 py-4 rounded-2xl font-bold hover:scale-105 transition-transform">
             Consultar Disponibilidade <ArrowRight size={20} />
           </a>
         </div>
@@ -254,7 +257,7 @@ export default function App() {
       <section id="pricing" className="py-24 bg-gray-50 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Nossos Preços</h2>
+            <h2 className="text-4xl font-bold mb-4">Nossos Planos</h2>
             <p className="text-gray-600">Economia e qualidade para o seu bolso.</p>
           </div>
 
@@ -263,8 +266,8 @@ export default function App() {
               <div className="w-16 h-16 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
                 <Droplets size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Lavagem Comum</h3>
-              <p className="text-gray-500 mb-6">Sabão e amaciante OMO/Comfort inclusos automaticamente.</p>
+              <h3 className="text-2xl font-bold mb-2">Ciclo Padrão</h3>
+              <p className="text-gray-500 mb-6">Lavagem ou Secagem</p>
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-lg font-bold">R$</span>
                 <span className="text-5xl font-bold text-brand-purple">16</span>
@@ -273,20 +276,15 @@ export default function App() {
               </div>
               <ul className="space-y-4 mb-10">
                 <li className="flex items-center gap-3 text-gray-600">
-                  <CheckCircle2 size={18} className="text-brand-green" /> Cesto medida padrão
+                  <CheckCircle2 size={18} className="text-brand-green" /> Lavagem em 35 min
                 </li>
                 <li className="flex items-center gap-3 text-gray-600">
-                  <CheckCircle2 size={18} className="text-brand-green" /> Produtos profissionais
+                  <CheckCircle2 size={18} className="text-brand-green" /> Secagem em até 45 min
+                </li>
+                <li className="flex items-center gap-3 text-gray-600">
+                  <CheckCircle2 size={18} className="text-brand-green" /> Sabão e amaciante OMO/Confort inclusos automaticamente.
                 </li>
               </ul>
-              <div className="flex flex-col gap-3">
-                <button className="w-full py-4 rounded-2xl border-2 border-brand-purple text-brand-purple font-bold hover:bg-brand-purple hover:text-white transition-all">
-                  Quero lavar agora
-                </button>
-                <button className="w-full py-4 rounded-2xl bg-brand-purple text-white font-bold hover:bg-brand-blue transition-all shadow-lg shadow-brand-purple/20">
-                  Quero secar agora
-                </button>
-              </div>
             </div>
 
             <div className="bg-white p-10 rounded-[2.5rem] shadow-xl border-2 border-brand-purple relative overflow-hidden">
@@ -296,8 +294,8 @@ export default function App() {
               <div className="w-16 h-16 bg-brand-purple/10 rounded-2xl flex items-center justify-center text-brand-purple mb-6">
                 <Wind size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Lavagem BIG</h3>
-              <p className="text-gray-500 mb-6">Ideal para edredons e peças grandes. Roupas quentinhas e macias.</p>
+              <h3 className="text-2xl font-bold mb-2">Lavagem ou Secagem BIG</h3>
+              <p className="text-gray-500 mb-6">Ideal para edredons e peças grandes.</p>
               <div className="flex items-baseline gap-1 mb-8">
                 <span className="text-lg font-bold">R$</span>
                 <span className="text-5xl font-bold text-brand-purple">34</span>
@@ -306,20 +304,15 @@ export default function App() {
               </div>
               <ul className="space-y-4 mb-10">
                 <li className="flex items-center gap-3 text-gray-600">
-                  <CheckCircle2 size={18} className="text-brand-green" /> Alta capacidade
+                  <CheckCircle2 size={18} className="text-brand-green" /> Lavagem em 35 min
                 </li>
                 <li className="flex items-center gap-3 text-gray-600">
-                  <CheckCircle2 size={18} className="text-brand-green" /> Sem necessidade de passar
+                  <CheckCircle2 size={18} className="text-brand-green" /> Secagem em até 45 min
+                </li>
+                <li className="flex items-center gap-3 text-gray-600">
+                  <CheckCircle2 size={18} className="text-brand-green" /> Luz ultravioleta que ajuda na eliminação de de odores e bactérias
                 </li>
               </ul>
-              <div className="flex flex-col gap-3">
-                <button className="w-full py-4 rounded-2xl border-2 border-brand-purple text-brand-purple font-bold hover:bg-brand-purple hover:text-white transition-all bg-white">
-                  Quero lavar agora
-                </button>
-                <button className="w-full py-4 rounded-2xl bg-brand-purple text-white font-bold hover:bg-brand-blue transition-all shadow-lg shadow-brand-purple/20">
-                  Quero secar agora
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -445,17 +438,22 @@ export default function App() {
               </div>
             </div>
             <div className="lg:col-span-2">
-              <div className="rounded-[2.5rem] overflow-hidden h-[500px] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.345678901234!2d-57.0890123!3d-29.756789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ1JzI0LjQiUyA1N8KwMDUnMjAuNCJX!5e0!3m2!1spt-BR!2sbr!4v1600000000000!5m2!1spt-BR!2sbr" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+              <a 
+                href="https://www.google.com/maps/dir//Rua+Bento+Martins,+2426+-+Uruguaiana,+RS" 
+                target="_blank" 
+                rel="noreferrer"
+                className="block rounded-[2.5rem] overflow-hidden h-[500px] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 group relative"
+              >
+                <img 
+                  src="https://skzfezsseuyqgzbdapng.supabase.co/storage/v1/object/public/meeeeee/Captura%20de%20tela%202026-03-07%20123030.png" 
+                  alt="Mapa de Localização Santo Enxágue" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
                 />
-              </div>
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="bg-brand-purple text-white px-8 py-4 rounded-2xl font-bold shadow-2xl">Clique para ver no Google Maps</span>
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -465,7 +463,7 @@ export default function App() {
       <section id="faq" className="py-24 px-4 md:px-8">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center">Dúvidas Frequentes</h2>
-          <div className="space-y-6">
+          <div className="space-y-4">
             {[
               { q: "Quanto tempo demora o ciclo?", a: "Os ciclos de lavagem duram 35 minutos e os ciclos de secagem duram até 45 minutos (podendo ser encerrado a qualquer momento). Em pouco mais de uma hora você tem suas roupas prontas para guardar!" },
               { q: "Qual o horário de funcionamento?", a: "Funcionamos todos os dias, incluindo sábados, domingos e feriados, das 06h:00 às 22:00." },
@@ -475,9 +473,28 @@ export default function App() {
               { q: "O que não pode ser lavado?", a: "Por higiene e segurança das máquinas, não é permitida a lavagem de: tapetes, tênis/calçados, roupas de pet, roupas hospitalares, almofadas e travesseiros." },
               { q: "Posso lavar edredon e coberta?", a: "Pode! Verifique primeiro a capacidade em nossos cestos de medida. Temos a máquina BIG, ideal para esses tipos de peça." }
             ].map((item, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <h4 className="font-bold text-lg mb-2 text-brand-purple">{item.q}</h4>
-                <p className="text-gray-600">{item.a}</p>
+              <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <button 
+                  onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+                  className="w-full p-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                >
+                  <h4 className="font-bold text-lg text-brand-purple">{item.q}</h4>
+                  {openFaqIndex === i ? <ChevronUp className="text-brand-purple" /> : <ChevronDown className="text-brand-purple" />}
+                </button>
+                <AnimatePresence>
+                  {openFaqIndex === i && (
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="px-6 pb-6 text-gray-600 border-t border-gray-50 pt-4">
+                        {item.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </div>
@@ -541,7 +558,7 @@ export default function App() {
 
       {/* 10. Floating WhatsApp Button */}
       <a 
-        href="https://wa.me/5555999999999" 
+        href="https://bit.ly/4srCqg2" 
         target="_blank" 
         rel="noreferrer"
         className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group"
