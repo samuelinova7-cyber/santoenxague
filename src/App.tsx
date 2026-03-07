@@ -310,7 +310,7 @@ export default function App() {
                   <CheckCircle2 size={18} className="text-brand-green" /> Secagem em até 45 min
                 </li>
                 <li className="flex items-center gap-3 text-gray-600">
-                  <CheckCircle2 size={18} className="text-brand-green" /> Luz ultravioleta que ajuda na eliminação de de odores e bactérias
+                  <CheckCircle2 size={18} className="text-brand-green" /> Luz ultravioleta que ajuda na eliminação de odores e bactérias
                 </li>
               </ul>
             </div>
