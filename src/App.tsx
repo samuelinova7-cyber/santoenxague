@@ -4,6 +4,12 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import heroVideo from './santo enxague grook.mp4';
+import img1 from './Captura de tela 2026-03-02 130317.png';
+import img2 from './Captura de tela 2026-03-02 130343.png';
+import img3 from './Captura de tela 2026-03-02 130412.png';
+import img4 from './Captura de tela 2026-03-02 130423.png';
+import img5 from './Captura de tela 2026-03-05 205121.png';
 import { 
   Menu, 
   X, 
@@ -24,7 +30,20 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-const HERO_VIDEO_URL = "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/grok-video-9eeefebc-d8bd-4a27-beda-28d407a22b63%20(1).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvZ3Jvay12aWRlby05ZWVlZmViYy1kOGJkLTRhMjctYmVkYS0yOGQ0MDdhMjJiNjMgKDEpLm1wNCIsImlhdCI6MTc3Mjc1NTc1MywiZXhwIjoyMDU2NTc5NzUzfQ.BZ3VNlPeIMhCXo2mcoQuTnAkHrnYZvCBbbtObvO64bE";
+const HERO_VIDEO_URL = heroVideo;
+
+const VideoLogo = ({ className = "w-12 h-12" }: { className?: string }) => (
+  <div className={`overflow-hidden rounded-lg ${className} relative bg-gray-100`}>
+    <video 
+      src={heroVideo} 
+      autoPlay 
+      loop 
+      muted 
+      playsInline 
+      className="w-full h-full object-cover"
+    />
+  </div>
+);
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,19 +67,57 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-white selection:bg-brand-purple/20 selection:text-brand-purple">
+    <div className="min-h-screen bg-white/80 selection:bg-brand-purple/20 selection:text-brand-purple relative">
+      {/* Background Video */}
+      <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+        <video 
+          src={heroVideo} 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="w-full h-full object-cover opacity-5"
+        />
+      </div>
+
+      {/* Fixed Sticky Marquee */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-brand-purple text-white py-2 overflow-hidden border-b border-white/10">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="flex items-center gap-8 mx-4">
+              <VideoLogo className="w-8 h-8 rounded-full border border-white/20" />
+              <span className="flex items-center gap-2">
+                <Clock size={14} /> Aberto todos os dias: 06h às 22h
+              </span>
+              <span className="flex items-center gap-2">
+                <MapPin size={14} /> Lavanderia Express em Uruguaiana - RS
+              </span>
+              <span className="flex items-center gap-2">
+                <Smartphone size={14} /> Tecnologia Self-Service
+              </span>
+              <span className="w-2 h-2 bg-brand-green rounded-full" />
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 px-4 md:px-8 ${scrolled ? 'glass shadow-lg py-3' : 'bg-white py-5'}`}>
+      <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 px-4 md:px-8 ${scrolled ? 'glass shadow-lg py-3' : 'bg-white/90 backdrop-blur-sm py-5'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between px-6">
             <div className="flex items-center gap-3">
-              <img 
-                src="https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-05%20205121.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDUgMjA1MTIxLnBuZyIsImlhdCI6MTc3Mjc1NTg2NCwiZXhwIjoyMDU2NTc5ODY0fQ.m2zgFylG1UuWwfTk3fP3jiyIVEti1U_TuXCyy_Bpu0Q" 
-                alt="Santo Enxágue Logo" 
-                className="w-12 h-12 object-contain"
-                referrerPolicy="no-referrer"
-              />
-              <span className="font-bold text-xl tracking-tight text-brand-purple">Santo Enxágue</span>
+              <motion.div
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative"
+              >
+                <span 
+                  className="font-bold text-2xl md:text-3xl tracking-tighter brand-text-shine brand-reflect" 
+                  data-text="Santo Enxágue"
+                >
+                  Santo Enxágue
+                </span>
+              </motion.div>
             </div>
 
             {/* Desktop Nav */}
@@ -127,44 +184,42 @@ export default function App() {
       </AnimatePresence>
 
       {/* 2. Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 md:px-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6 text-gray-900">
-              Roupas <span className="text-brand-purple">limpas e secas</span> em aproximadamente 1 hora!
-            </h1>
-            <p className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-              A experiência de lavanderia express que você merece. Tecnologia de ponta, conforto total e praticidade para o seu dia a dia.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#units" className="bg-brand-green text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-transform shadow-xl shadow-brand-green/20">
-                Ver Localização
-              </a>
-            </div>
-          </motion.div>
+      <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+        {/* Hero Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            src={heroVideo} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white pointer-events-none" />
+        </div>
 
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 text-center">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="max-w-3xl mx-auto"
           >
-            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-brand-purple/30 aspect-[4/3] relative">
-              <video 
-                src={HERO_VIDEO_URL} 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/40 to-transparent pointer-events-none" />
+            <h1 className="text-5xl md:text-8xl font-bold leading-[1.1] mb-8 text-gray-900 drop-shadow-sm">
+              Roupas <span className="text-brand-purple">limpas e secas</span> em aproximadamente 1 hora!
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-800 mb-10 leading-relaxed font-medium">
+              A experiência de lavanderia express que você merece. Tecnologia de ponta, conforto total e praticidade para o seu dia a dia.
+            </p>
+            <div className="flex flex-wrap gap-6 justify-center">
+              <a href="#units" className="bg-brand-purple text-white px-10 py-5 rounded-2xl font-bold hover:scale-105 transition-transform shadow-2xl shadow-brand-purple/40">
+                Ver Localização
+              </a>
+              <a href="#how-it-works" className="bg-white text-brand-purple px-10 py-5 rounded-2xl font-bold hover:scale-105 transition-transform shadow-xl border border-brand-purple/10">
+                Como Funciona
+              </a>
             </div>
           </motion.div>
         </div>
@@ -368,23 +423,17 @@ export default function App() {
           </div>
 
           <div className="flex animate-marquee">
-            {[
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130423.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwNDIzLnBuZyIsImlhdCI6MTc3MjQ2ODI5MywiZXhwIjoxOTkzMjIwMjkzfQ.zKm_sxcaZzccYnIY6ScGazOasMsslUJ1-Xd4Alasv2g",
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130412.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwNDEyLnBuZyIsImlhdCI6MTc3MjQ2ODMxOCwiZXhwIjoxOTYxNjg0MzE4fQ.yrQ8z2uY2hBtBBtdn030Umx2hM0B9P6lO3TlbnqdigI",
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130343.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwMzQzLnBuZyIsImlhdCI6MTc3MjQ2ODM1OCwiZXhwIjoxOTkzMjIwMzU4fQ.3ZpD1FJDx3Qbnz9X4-MAkbk6zyWMrjBViXPfTH7TtAc",
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130317.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwMzE3LnBuZyIsImlhdCI6MTc3MjQ2ODM3NywiZXhwIjoyMDI0NzU2Mzc3fQ.VzhirTTjV1xXfM63zG-aUTC6nU8Ysy5dwnkyd2Y14SQ",
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130423.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwNDIzLnBuZyIsImlhdCI6MTc3MjQ2ODI5MywiZXhwIjoxOTkzMjIwMjkzfQ.zKm_sxcaZzccYnIY6ScGazOasMsslUJ1-Xd4Alasv2g",
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130412.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwNDEyLnBuZyIsImlhdCI6MTc3MjQ2ODMxOCwiZXhwIjoxOTYxNjg0MzE4fQ.yrQ8z2uY2hBtBBtdn030Umx2hM0B9P6lO3TlbnqdigI",
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130343.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwMzQzLnBuZyIsImlhdCI6MTc3MjQ2ODM1OCwiZXhwIjoxOTkzMjIwMzU4fQ.3ZpD1FJDx3Qbnz9X4-MAkbk6zyWMrjBViXPfTH7TtAc",
-              "https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-02%20130317.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDIgMTMwMzE3LnBuZyIsImlhdCI6MTc3MjQ2ODM3NywiZXhwIjoyMDI0NzU2Mzc3fQ.VzhirTTjV1xXfM63zG-aUTC6nU8Ysy5dwnkyd2Y14SQ",
-            ].map((img, i) => (
-              <div key={i} className="mx-2 min-w-[280px] md:min-w-[320px] aspect-[9/16] rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-gray-50">
+            {[img1, img2, img3, img4, img5, img1, img2, img3].map((img, i) => (
+              <div key={i} className="mx-2 min-w-[280px] md:min-w-[320px] aspect-[9/16] rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-gray-50 group">
                 <img 
                   src={img} 
                   alt={`Instagram post ${i}`} 
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                  <Instagram className="text-white w-12 h-12" />
+                </div>
               </div>
             ))}
           </div>
@@ -505,13 +554,8 @@ export default function App() {
       <footer className="py-20 bg-white px-4 md:px-8 border-t border-gray-100">
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
           <div className="md:col-span-4 flex flex-col items-center text-center">
-            <div className="flex items-center gap-3 mb-6">
-              <img 
-                src="https://ophugihxmlphgcryuode.supabase.co/storage/v1/object/sign/inova7/Captura%20de%20tela%202026-03-05%20205121.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82NjhkNTkyYi05MDM0LTRjNjgtYmI3Ny03YzYzYTA2NTM0OTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbm92YTcvQ2FwdHVyYSBkZSB0ZWxhIDIwMjYtMDMtMDUgMjA1MTIxLnBuZyIsImlhdCI6MTc3MjgwNzU0NywiZXhwIjoyMDU2NjMxNTQ3fQ._VL1av0Ykl9ir1jKgCBvA5AdkWvjbOHOpRVEjoevnPE" 
-                alt="Santo Enxágue Logo" 
-                className="w-20 h-20 object-contain"
-                referrerPolicy="no-referrer"
-              />
+            <div className="flex flex-col items-center gap-3 mb-6">
+              <VideoLogo className="w-20 h-20 md:w-24 md:h-24" />
               <span className="font-bold text-3xl tracking-tight text-brand-purple">Santo Enxágue</span>
             </div>
             <p className="text-gray-500 max-w-md mb-8">

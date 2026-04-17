@@ -30,3 +30,43 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.brand-text-shine {
+  background: linear-gradient(
+    to right,
+    #612F74 0%,
+    #612F74 40%,
+    #9BFAB0 50%,
+    #612F74 60%,
+    #612F74 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 3s linear infinite;
+}
+
+.brand-reflect {
+  position: relative;
+}
+
+.brand-reflect::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 90%;
+  transform: scaleY(-0.8) translateY(2px);
+  background: linear-gradient(to bottom, rgba(97, 47, 116, 0.2), transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: blur(1px);
+  opacity: 0.4;
+  pointer-events: none;
+}
