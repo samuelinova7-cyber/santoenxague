@@ -4,12 +4,6 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import heroVideo from './santo enxague grook.mp4';
-import img1 from './Captura de tela 2026-03-02 130317.png';
-import img2 from './Captura de tela 2026-03-02 130343.png';
-import img3 from './Captura de tela 2026-03-02 130412.png';
-import img4 from './Captura de tela 2026-03-02 130423.png';
-import img5 from './Captura de tela 2026-03-05 205121.png';
 import { 
   Menu, 
   X, 
@@ -30,12 +24,19 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-const HERO_VIDEO_URL = heroVideo;
+const HERO_VIDEO_URL = "https://res.cloudinary.com/dqukldtq1/video/upload/v1776561255/santo_enxague_grook_qwzoej.mp4";
+const ABOUT_VIDEO_URL = "https://res.cloudinary.com/dqukldtq1/video/upload/v1776562449/WhatsApp_Video_2026-04-18_at_10.28.03_PM_ca0rvx.mp4";
+
+const INSTAGRAM_IMAGES = [
+  "https://res.cloudinary.com/dqukldtq1/image/upload/v1776561307/Captura_de_tela_2026-03-02_130423_hi1cm4.png",
+  "https://res.cloudinary.com/dqukldtq1/image/upload/v1776561305/Captura_de_tela_2026-03-02_130412_iowytf.png",
+  "https://res.cloudinary.com/dqukldtq1/image/upload/v1776561297/Captura_de_tela_2026-03-02_130343_vbt61k.png"
+];
 
 const VideoLogo = ({ className = "w-12 h-12" }: { className?: string }) => (
   <div className={`overflow-hidden rounded-lg ${className} relative bg-gray-100`}>
     <video 
-      src={heroVideo} 
+      src={HERO_VIDEO_URL} 
       autoPlay 
       loop 
       muted 
@@ -71,12 +72,12 @@ export default function App() {
       {/* Background Video */}
       <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
         <video 
-          src={heroVideo} 
+          src={HERO_VIDEO_URL} 
           autoPlay 
           loop 
           muted 
           playsInline 
-          className="w-full h-full object-cover opacity-5"
+          className="w-full h-full object-cover opacity-20 blur-[60px]"
         />
       </div>
 
@@ -105,7 +106,8 @@ export default function App() {
       <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 px-4 md:px-8 ${scrolled ? 'glass shadow-lg py-3' : 'bg-white/90 backdrop-blur-sm py-5'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between px-6">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
+              <VideoLogo className="w-10 h-10 md:w-12 md:h-12 rounded-lg border border-brand-purple/20 shadow-lg" />
               <motion.div
                 animate={{ y: [0, -3, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -135,7 +137,7 @@ export default function App() {
 
             <div className="hidden md:block">
               <a 
-                href="https://bit.ly/4srCqg2" 
+                href="https://wa.me/5555991371968?text=Ol%c3%a1!%20Gostaria%20de%20saber%20como%20funciona%20a%20lavanderia%3F" 
                 target="_blank" 
                 rel="noreferrer"
                 className="bg-[#25D366] text-white px-6 py-2.5 rounded-xl font-semibold text-sm hover:bg-green-600 transition-all shadow-lg flex items-center gap-2"
@@ -173,7 +175,7 @@ export default function App() {
                 </a>
               ))}
               <a 
-                href="https://bit.ly/4srCqg2" 
+                href="https://wa.me/5555991371968?text=Ol%c3%a1!%20Gostaria%20de%20saber%20como%20funciona%20a%20lavanderia%3F" 
                 className="bg-brand-purple text-white py-4 rounded-2xl text-center font-bold text-lg shadow-xl shadow-brand-purple/20"
               >
                 Lavar Agora
@@ -188,12 +190,12 @@ export default function App() {
         {/* Hero Video Background */}
         <div className="absolute inset-0 z-0">
           <video 
-            src={heroVideo} 
+            src={HERO_VIDEO_URL} 
             autoPlay 
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[10px] scale-105"
           />
           <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px] pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white pointer-events-none" />
@@ -211,7 +213,7 @@ export default function App() {
               Roupas <span className="text-brand-purple">limpas e secas</span> em aproximadamente 1 hora!
             </h1>
             <p className="text-xl md:text-2xl text-gray-800 mb-10 leading-relaxed font-medium">
-              A experiência de lavanderia express que você merece. Tecnologia de ponta, conforto total e praticidade para o seu dia a dia.
+              A experiência de lavanderia express em Uruguaiana que você merece. Tecnologia de ponta, conforto total e praticidade para o seu dia a dia.
             </p>
             <div className="flex flex-wrap gap-6 justify-center">
               <a href="#units" className="bg-brand-purple text-white px-10 py-5 rounded-2xl font-bold hover:scale-105 transition-transform shadow-2xl shadow-brand-purple/40">
@@ -229,13 +231,16 @@ export default function App() {
       <section id="about" className="py-24 bg-gray-50 px-4 md:px-8">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
-            <div className="rounded-[2rem] overflow-hidden shadow-2xl aspect-[9/16] max-w-[320px] mx-auto bg-white">
-              <iframe 
-                src="https://www.instagram.com/reel/DT25VlbDb3t/embed" 
-                className="w-full h-full border-0"
-                allow="encrypted-media"
-                title="Instagram Reel"
+            <div className="rounded-[2rem] overflow-hidden shadow-2xl aspect-[9/16] max-w-[320px] mx-auto bg-white relative">
+              <video 
+                src={ABOUT_VIDEO_URL} 
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
           </div>
           <div className="order-1 md:order-2">
@@ -323,13 +328,7 @@ export default function App() {
               </div>
               <h3 className="text-2xl font-bold mb-2">Ciclo Padrão</h3>
               <p className="text-gray-500 mb-6">Lavagem ou Secagem</p>
-              <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-lg font-bold">R$</span>
-                <span className="text-5xl font-bold text-brand-purple">16</span>
-                <span className="text-gray-400">,90</span>
-                <span className="text-sm text-gray-400 ml-2">/ ciclo</span>
-              </div>
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-10 text-left">
                 <li className="flex items-center gap-3 text-gray-600">
                   <CheckCircle2 size={18} className="text-brand-green" /> Lavagem em 35 min
                 </li>
@@ -340,6 +339,14 @@ export default function App() {
                   <CheckCircle2 size={18} className="text-brand-green" /> Sabão e amaciante OMO/Confort inclusos automaticamente.
                 </li>
               </ul>
+              <a 
+                href="https://wa.me/5555991371968?text=Ol%c3%a1!%20Gostaria%20de%20saber%20como%20funciona%20a%20lavanderia%3F"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-4 bg-brand-purple text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-brand-blue transition-all"
+              >
+                Saiba mais <MessageCircle size={18} />
+              </a>
             </div>
 
             <div className="bg-white p-10 rounded-[2.5rem] shadow-xl border-2 border-brand-purple relative overflow-hidden">
@@ -351,13 +358,7 @@ export default function App() {
               </div>
               <h3 className="text-2xl font-bold mb-2">Lavagem ou Secagem BIG</h3>
               <p className="text-gray-500 mb-6">Ideal para edredons e peças grandes.</p>
-              <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-lg font-bold">R$</span>
-                <span className="text-5xl font-bold text-brand-purple">34</span>
-                <span className="text-gray-400">,90</span>
-                <span className="text-sm text-gray-400 ml-2">/ ciclo</span>
-              </div>
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-10 text-left">
                 <li className="flex items-center gap-3 text-gray-600">
                   <CheckCircle2 size={18} className="text-brand-green" /> Lavagem em 35 min
                 </li>
@@ -368,6 +369,14 @@ export default function App() {
                   <CheckCircle2 size={18} className="text-brand-green" /> Luz ultravioleta que ajuda na eliminação de odores e bactérias
                 </li>
               </ul>
+              <a 
+                href="https://wa.me/5555991371968?text=Ol%c3%a1!%20Gostaria%20de%20saber%20como%20funciona%20a%20lavanderia%3F"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full py-4 bg-brand-purple text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-brand-blue transition-all"
+              >
+                Saiba mais <MessageCircle size={18} />
+              </a>
             </div>
           </div>
         </div>
@@ -380,7 +389,7 @@ export default function App() {
             <h2 className="text-4xl font-bold mb-4">O que dizem nossos clientes</h2>
             <p className="text-gray-600">Confira a experiência de quem já usa a Santo Enxágue.</p>
           </div>
-          <a href="https://instagram.com/santoenxague" className="hidden md:flex items-center gap-2 text-brand-purple font-bold hover:underline">
+          <a href="https://instagram.com/santoenxague/" className="hidden md:flex items-center gap-2 text-brand-purple font-bold hover:underline">
             Seguir no Instagram <Instagram size={20} />
           </a>
         </div>
@@ -413,7 +422,7 @@ export default function App() {
               <p className="text-gray-500">Acompanhe as novidades e promoções da @santoenxague</p>
             </div>
             <a 
-              href="https://instagram.com/santoenxague" 
+              href="https://instagram.com/santoenxague/" 
               target="_blank" 
               rel="noreferrer"
               className="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
@@ -423,7 +432,7 @@ export default function App() {
           </div>
 
           <div className="flex animate-marquee">
-            {[img1, img2, img3, img4, img5, img1, img2, img3].map((img, i) => (
+            {[...INSTAGRAM_IMAGES, ...INSTAGRAM_IMAGES].map((img, i) => (
               <div key={i} className="mx-2 min-w-[280px] md:min-w-[320px] aspect-[9/16] rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-gray-50 group">
                 <img 
                   src={img} 
@@ -441,7 +450,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
           <a 
-            href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" 
+            href="https://g.page/r/CZTMrXFfclLZEBM/review" 
             target="_blank" 
             rel="noreferrer"
             className="inline-flex items-center gap-2 bg-white border-2 border-gray-200 px-8 py-3 rounded-xl font-bold hover:border-brand-purple transition-colors"
@@ -562,7 +571,7 @@ export default function App() {
               A sua lavanderia express em Uruguaiana. Roupas limpas, secas e cheirosas com a praticidade que o seu tempo exige.
             </p>
             <div className="flex gap-4 justify-center">
-              <a href="https://www.instagram.com/santoenxague?igsh=MTJhbzJjcjllMDk0Ng==" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#E1306C] hover:border-[#E1306C] transition-all">
+              <a href="https://www.instagram.com/santoenxague/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#E1306C] hover:border-[#E1306C] transition-all">
                 <Instagram size={24} />
               </a>
               <a href="https://www.facebook.com/profile.php?id=61575107378594&locale=pt_BR" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#4267B2] hover:border-[#4267B2] transition-all">
@@ -602,7 +611,7 @@ export default function App() {
 
       {/* 10. Floating WhatsApp Button */}
       <a 
-        href="https://bit.ly/4srCqg2" 
+        href="https://wa.me/5555991371968?text=Ol%c3%a1!%20Gostaria%20de%20saber%20como%20funciona%20a%20lavanderia%3F" 
         target="_blank" 
         rel="noreferrer"
         className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform group"
