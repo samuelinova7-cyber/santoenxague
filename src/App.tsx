@@ -103,9 +103,9 @@ export default function App() {
       </div>
 
       {/* Navbar */}
-      <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 px-4 md:px-8 ${scrolled ? 'glass shadow-lg py-3' : 'bg-white/90 backdrop-blur-sm py-5'}`}>
+      <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 px-4 md:px-8 ${scrolled ? 'glass shadow-lg py-2 md:py-3' : 'bg-white/90 backdrop-blur-sm py-3 md:py-5'}`}>
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between px-6">
+          <div className="flex items-center justify-between px-2 md:px-6">
             <div className="flex items-center gap-4">
               <VideoLogo className="w-10 h-10 md:w-12 md:h-12 rounded-lg border border-brand-purple/20 shadow-lg" />
               <motion.div
@@ -186,7 +186,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* 2. Hero Section */}
-      <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40 pb-20 md:pt-32">
         {/* Hero Video Background */}
         <div className="absolute inset-0 z-0">
           <video 
@@ -209,10 +209,10 @@ export default function App() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto"
           >
-            <h1 className="text-5xl md:text-8xl font-bold leading-[1.1] mb-8 text-gray-900 drop-shadow-sm">
+            <h1 className="text-3xl sm:text-4xl md:text-8xl font-bold leading-tight md:leading-[1.1] mb-8 text-gray-900 drop-shadow-sm">
               Roupas <span className="text-brand-purple">limpas e secas</span> em aproximadamente 1 hora!
             </h1>
-            <p className="text-xl md:text-2xl text-gray-800 mb-10 leading-relaxed font-medium">
+            <p className="text-lg md:text-2xl text-gray-800 mb-10 leading-relaxed font-medium px-4 md:px-0">
               A experiência de lavanderia express em Uruguaiana que você merece. Tecnologia de ponta, conforto total e praticidade para o seu dia a dia.
             </p>
             <div className="flex flex-wrap gap-6 justify-center">
